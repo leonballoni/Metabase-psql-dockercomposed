@@ -1,7 +1,15 @@
-# metabase-psql-docker
-Construir um docker-compose integrado com dataviz e um banco de dados com volume permanente
+# Metabase-psql-docker
+Make a built-in docker-composed metabase dataviz with a permanent postgresql db integrated  with pgadmin for GUI managing 
 
-The idea is to use [Docker](https://www.docker.com/) to facilitate sharing this project. 
+## Depedencies
+<h4 align="center">
+    <a href="https://docs.docker.com/engine/">Docker</a> |
+    <a href="https://docs.docker.com/compose/">Docker Compose</a> |
+    <a href="https://www.metabase.com/"> Metabase </a> |
+    <a href="https://www.postgresql.org/"> PostgreSQL </a> |
+    <a href="https://www.pgadmin.org/"> PgAdmin </a>
+</h4>
+
 
 1. Build a metabase data viz
 2. Build a PSQL db to persist local data
@@ -9,25 +17,21 @@ The idea is to use [Docker](https://www.docker.com/) to facilitate sharing this 
 
 # Quick Startup
 
-git clone the repo 
+1. Fork the repo 
 
-        git clone git@github.com:(youruserhere)/Metabase-Psql-Docker.git
+2. Clone It 
 
-Enter at the cloned repository and create the .env file
+3. Push the example .env file (modify it as you see fit)
 
-        MB_PORT=3000PSQL_SERVER_PORT=5432
-        PGADM_SERVER_PORT_IN=5050
-        PGADM_SERVER_PORT_OUT=80
-        PSQL_USER=postgres
-        PSQL_PSWD=postgres
-        PGADM_EMAIL=youremail@provider.com
-        PGADM_PSWD=postgres
+> curl -o .env https://raw.githubusercontent.com/leonballoni/Metabase-psql-dockercomposed/main/.env.example
 
+4. Enter the cloned repo and run the composed file 
 
-Run it with docker compose
+> docker-compose up -d
+    
+4. 1 Alternatively:
 
-        docker-compose up
-
+> docker-compose -f docker-compose.yml up -d
 
 # How to use it (step-by-step)
 
@@ -48,11 +52,14 @@ There is a way to check it the docker-compose script is working (not necessarily
 
     docker-compose -f docker-compose.yml config
 
-    This is very useful when building container that are time consuming 
+* **This is very useful when building container that are complex and time consuming**
 
 ## set up you environment variables
 
-First thing to do is to make you own .env file. 
+1. Download the example .env at your project folder and redefine it if needed.  
+> curl -o .env https://raw.githubusercontent.com/leonballoni/Metabase-psql-dockercomposed/main/.env.example
+
+<!-- First thing to do is to make you own .env file. 
 This will be used to build the docker compose with the right configuration. 
 
 Therefore, in your root folder or ./ path create a .env file as shown below. 
@@ -74,7 +81,7 @@ Insert the .env following informations
     PSQL_USER=postgres
     PSQL_PSWD=postgres
     PGADM_EMAIL=youremail@provider.com
-    PGADM_PSWD=postgres
+    PGADM_PSWD=postgres -->
 
 ## Using docker-compose 
 
@@ -95,7 +102,6 @@ After building and runnin, check it using
     docker ps 
 
 ![Check Dockers](images/running_docker.png "Check it")
-
 
 ## Accessing
 
